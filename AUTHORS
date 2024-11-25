@@ -1,0 +1,7 @@
+Program: check-systemd-service
+Homepage: https://github.com/rrendec/check-systemd-service
+Bug reports: https://github.com/rrendec/check-systemd-service/issues
+License: MIT
+
+Authors:
+Radu Rendec <radu@rendec.net>

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Nagios exit codes
+NAGIOS_STATUS_OK=0
+NAGIOS_STATUS_WARNING=1
+NAGIOS_STATUS_CRITICAL=2
+NAGIOS_STATUS_UNKNOWN=3
+
+if [[ -z "$1" ]]; then
+	echo "Usage: $0 unit"
+	exit $NAGIOS_STATUS_UNKNOWN
+fi
+
+result=$(systemctl is-active "$1" 2>/dev/null)
+rc=$?
+
+if [[ $rc -eq 0 ]]; then
+	echo -e "OK: Service $1 is $result"
+	exit $NAGIOS_STATUS_OK
+else
+	echo -e "CRITICAL: Service $1 is $result"
+	exit $NAGIOS_STATUS_CRITICAL
+fi
